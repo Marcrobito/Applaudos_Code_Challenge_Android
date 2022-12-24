@@ -1,4 +1,4 @@
-package com.applaudostudios.core.domain
+package com.applaudostudios.core.domain.model
 
 data class Show(
     val name: String,

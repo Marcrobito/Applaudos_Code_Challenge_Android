@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.applaudostudios.mubi.ui.screen.SplashScreen
 import com.applaudostudios.mubi.ui.theme.MubiTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,12 +19,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             MubiTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
+                SplashScreen()
+                /*Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
                     Greeting("Android")
-                }
+                }*/
             }
         }
     }
