@@ -1,3 +1,3 @@
 package com.applaudostudios.core.domain.model
 
-data class Card(val name: String, val urlImg: String, val rating: Float)
+data class Card(val id: Int, val name: String, val urlImg: String, val popularity: Float)
