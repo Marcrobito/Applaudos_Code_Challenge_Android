@@ -9,5 +9,6 @@ sealed class State
 data class HomeState(
     val isLoading: Boolean = true,
     val data: List<Card> = emptyList(),
-    val tvType: TVListType = TOP_RATED
+    val tvType: TVListType = TOP_RATED,
+    val error: String? = null
 ) : State()

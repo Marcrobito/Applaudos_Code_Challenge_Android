@@ -67,14 +67,20 @@ dependencies {
 
     //Moshi
     implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
 
     //Hilt
     implementation "com.google.dagger:hilt-android:2.44"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
     kapt "com.google.dagger:hilt-android-compiler:2.44"
 
     //Auth
     //implementation 'com.auth0.android:auth0:2.8.0'
+
+    //Glide
+    implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

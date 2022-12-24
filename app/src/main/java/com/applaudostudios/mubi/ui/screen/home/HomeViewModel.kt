@@ -1,19 +1,49 @@
 package com.applaudostudios.mubi.ui.screen.home
 
+import androidx.lifecycle.viewModelScope
+import com.applaudostudios.core.domain.model.Response
+import com.applaudostudios.core.domain.model.TVListType
+import com.applaudostudios.core.usecases.GetTVList
 import com.applaudostudios.mubi.BaseViewModel
 import com.applaudostudios.mubi.mvi.action.HomeAction
 import com.applaudostudios.mubi.mvi.action.HomeAction.NavigateToList
 import com.applaudostudios.mubi.mvi.action.HomeAction.PresentTVDetail
 import com.applaudostudios.mubi.mvi.state.HomeState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class HomeViewModel : BaseViewModel<HomeAction, HomeState>() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(private val getTVList: GetTVList) :
+    BaseViewModel<HomeAction, HomeState>() {
     override val initialState: HomeState = HomeState()
 
-    override fun userInput(input: HomeAction) = with(input) {
-        when(this){
-            is NavigateToList -> {}
+    init {
+        loadShowList()
+    }
+
+    override fun userInput(input: HomeAction) {
+        when (input) {
+            is NavigateToList -> loadShowList(input.tvListType)
             is PresentTVDetail -> {}
+        }
+    }
+
+    private fun loadShowList(tvListType: TVListType = TVListType.TOP_RATED) {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(isLoading = true)
+            val response = getTVList.invoke(tvListType)
+            if (response is Response.Success) {
+                _state.value = _state.value.copy(
+                    isLoading = false,
+                    data = response.data
+                )
+            } else {
+                _state.value = _state.value.copy(
+                    isLoading = false,
+                    error = (response as Response.Error).error.message
+                )
+            }
         }
     }
 }
