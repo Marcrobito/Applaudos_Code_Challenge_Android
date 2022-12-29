@@ -1,3 +1,9 @@
 package com.applaudostudios.core.domain.model
 
-data class Season(val season: String, val episodes: Int, val summary: String)
+data class Season(
+    val id: Int,
+    val name: String,
+    val urlImage: String?,
+    val episodes: Int,
+    val summary: String
+)

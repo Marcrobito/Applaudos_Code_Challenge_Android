@@ -1,5 +1,6 @@
 package com.applaudostudios.mubi.network
 
+import com.applaudostudios.core.data.dto.ShowDTO
 import com.applaudostudios.core.data.responses.TVResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,4 +16,9 @@ interface TheMovieDBApi {
         @Query("api_key") apiKey: String = API_KEY
     ): TVResponse
 
+    @GET("tv/{id}")
+    suspend fun getShow(
+        @Path("id") id: Int,
+        @Query("api_key") apiKey: String = API_KEY
+    ): ShowDTO
 }

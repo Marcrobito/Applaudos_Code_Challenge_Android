@@ -7,5 +7,6 @@ import com.applaudostudios.core.domain.model.TVListType
 import com.applaudostudios.core.domain.model.TVListType.TOP_RATED
 
 class GetTVList(private val repository: TVListRepository) {
-    suspend operator fun invoke(tvListType: TVListType = TOP_RATED): Response<List<Card>> = repository.getTVList(tvListType)
+    suspend operator fun invoke(tvListType: TVListType = TOP_RATED): Response<List<Card>> =
+        repository.getTVList(tvListType)
 }

@@ -1,4 +1,4 @@
-package com.applaudostudios.mubi
+package com.applaudostudios.mubi.base
 
 import androidx.lifecycle.ViewModel
 import com.applaudostudios.mubi.mvi.action.Action

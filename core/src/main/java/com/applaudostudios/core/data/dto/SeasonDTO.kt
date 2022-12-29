@@ -4,10 +4,10 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class CardDTO(
+data class SeasonDTO(
     @Json(name = "id") val id: Int,
     @Json(name = "name") val name: String,
-    @Json(name = "backdrop_path") val urlImg: String?,
-    @Json(name = "poster_path") val poster: String,
-    @Json(name = "vote_average") val popularity: Double
+    @Json(name = "poster_path") val urlImage:String?,
+    @Json(name = "episode_count") val episodes: Int,
+    @Json(name = "overview") val summary: String
 )

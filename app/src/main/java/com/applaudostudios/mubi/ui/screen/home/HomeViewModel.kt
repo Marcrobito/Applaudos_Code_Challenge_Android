@@ -1,10 +1,11 @@
 package com.applaudostudios.mubi.ui.screen.home
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.applaudostudios.core.domain.model.Response
 import com.applaudostudios.core.domain.model.TVListType
 import com.applaudostudios.core.usecases.GetTVList
-import com.applaudostudios.mubi.BaseViewModel
+import com.applaudostudios.mubi.base.BaseViewModel
 import com.applaudostudios.mubi.mvi.action.HomeAction
 import com.applaudostudios.mubi.mvi.action.HomeAction.NavigateToList
 import com.applaudostudios.mubi.mvi.action.HomeAction.PresentTVDetail
@@ -30,9 +31,10 @@ class HomeViewModel @Inject constructor(private val getTVList: GetTVList) :
     }
 
     private fun loadShowList(tvListType: TVListType = TVListType.TOP_RATED) {
+        _state.value = _state.value.copy(isLoading = true)
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
             val response = getTVList.invoke(tvListType)
+            Log.d("HomeViewModel", response.toString())
             if (response is Response.Success) {
                 _state.value = _state.value.copy(
                     isLoading = false,

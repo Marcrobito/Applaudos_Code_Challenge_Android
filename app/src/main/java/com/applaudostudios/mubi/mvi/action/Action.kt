@@ -8,3 +8,7 @@ sealed class HomeAction : Action() {
     data class NavigateToList(val tvListType: TVListType) : HomeAction()
     data class PresentTVDetail(val id: Int) : HomeAction()
 }
+
+sealed class SeriesDetailAction : Action() {
+    data class ShowSeriesDetail(val seriesId: Int) : SeriesDetailAction()
+}
