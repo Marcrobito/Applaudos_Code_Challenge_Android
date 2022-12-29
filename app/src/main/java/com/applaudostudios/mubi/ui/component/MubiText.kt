@@ -4,6 +4,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
@@ -20,7 +21,8 @@ fun MubiText(
             modifier = modifier,
             textAlign = textAlign,
             fontSize = fontSize.sp,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            fontWeight = fontWeight
         )
     }
 
@@ -30,5 +32,6 @@ data class MubiTextStyle(
     val textColor: Color = Color.White,
     val modifier: Modifier = Modifier,
     val textAlign: TextAlign = TextAlign.Center,
-    val fontSize: Int = 16
+    val fontSize: Int = 16,
+    val fontWeight: FontWeight = FontWeight.Normal
 )

@@ -1,12 +1,15 @@
 package com.applaudostudios.mubi.ui.component
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import com.applaudostudios.mubi.R
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -17,7 +20,8 @@ fun RatingBar(
     rating: Double = 0.0,
     stars: Int = 5,
     starsColor: Color = Color.Unspecified,
-    showRating: Boolean = true
+    showRating: Boolean = true,
+    height: Int = 16
 ) {
     val filledStars = floor(rating).toInt()
     val unfilledStars = (stars - ceil(rating)).toInt()
@@ -26,6 +30,7 @@ fun RatingBar(
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
         repeat(filledStars) {
             Icon(
+                modifier = Modifier.height(height.dp).aspectRatio(1F),
                 painter = painterResource(id = R.drawable.star),
                 contentDescription = null,
                 tint = starsColor
@@ -34,6 +39,7 @@ fun RatingBar(
 
         if (halfStar) {
             Icon(
+                modifier = Modifier.height(height.dp).aspectRatio(1F),
                 painter = painterResource(id = R.drawable.half_star),
                 contentDescription = null,
                 tint = starsColor
@@ -42,6 +48,7 @@ fun RatingBar(
 
         repeat(unfilledStars) {
             Icon(
+                modifier = Modifier.height(height.dp).aspectRatio(1F),
                 painter = painterResource(id = R.drawable.unfilled_star),
                 contentDescription = null,
                 tint = starsColor

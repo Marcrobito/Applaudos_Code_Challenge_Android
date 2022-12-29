@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.applaudostudios.mubi.ui.screen.LoginScreen
+import com.applaudostudios.mubi.ui.screen.signin.SignInScreen
 import com.applaudostudios.mubi.ui.screen.SplashScreen
 import com.applaudostudios.mubi.ui.screen.home.HomeScreen
 import com.applaudostudios.mubi.ui.screen.seriesdetail.SeriesDetailScreen
@@ -17,13 +17,13 @@ fun MainNavigation(mainNavController: NavHostController? = null) {
     MubiTheme {
         NavHost(
             navController = navController,
-            startDestination = LOGIN_ROUTE_STRING
+            startDestination = SPLASH_ROUTE_STRING
         ) {
             composable(SPLASH_ROUTE_STRING) {
                 SplashScreen(navController = navController)
             }
             composable(LOGIN_ROUTE_STRING) {
-                LoginScreen(navController = navController)
+                SignInScreen(navController = navController)
             }
             composable(HOME_ROUTE_STRING) {
                 HomeScreen(navController = navController)

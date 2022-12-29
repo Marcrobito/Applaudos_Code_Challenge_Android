@@ -14,14 +14,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -67,18 +71,21 @@ fun SeriesDetailScreen(
                             .fillMaxHeight(0.28F)
                             .fillMaxWidth()
                             .background(
-                                brush = Brush.linearGradient(
-                                    colors = listOf(Color(0F, 0F, 0F, 0.6F), Color.Transparent),
-                                    start = Offset(0f, Float.POSITIVE_INFINITY),
-                                    end = Offset(Float.POSITIVE_INFINITY, 0f)
+                                brush = Brush.verticalGradient(
+                                    colors = listOf(Color.Transparent, Color(0F, 0F, 0F, 0.8F))
                                 )
                             )
                     )
+                    IconButton(onClick = {
+                        navController?.popBackStack()
+                    }) {
+                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "", tint = Color.White)
+                    }
                     Column(
                         modifier = Modifier
                             .fillMaxHeight(0.28F)
                             .fillMaxWidth()
-                            .padding(16.dp),
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
                         verticalArrangement = Arrangement.Bottom
                     ) {
                         MubiText(
@@ -87,9 +94,15 @@ fun SeriesDetailScreen(
                         )
                         MubiText(
                             text = show.name,
-                            MubiTextStyle(Gray, textAlign = TextAlign.Justify)
+                            MubiTextStyle(
+                                Color.White,
+                                textAlign = TextAlign.Justify,
+                                fontSize = 32,
+                                fontWeight = FontWeight.SemiBold
+                            )
                         )
-                        RatingBar(rating = show.rating, showRating = false)
+                        VerticalSpace(8)
+                        RatingBar(rating = show.rating, showRating = false, height = 20)
                     }
                 }
                 Column(modifier = Modifier.padding(horizontal = 16.dp)) {

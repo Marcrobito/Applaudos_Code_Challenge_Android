@@ -14,11 +14,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.applaudostudios.mubi.R
+import com.applaudostudios.mubi.ui.navigation.LOGIN_ROUTE_STRING
 import com.applaudostudios.mubi.ui.theme.LightBlue
 import com.applaudostudios.mubi.ui.theme.PrimaryPurple
 
 @Composable
 fun SplashScreen(navController: NavHostController? = null) {
+
+    navController?.navigate(LOGIN_ROUTE_STRING)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

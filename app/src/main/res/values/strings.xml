@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Mubi</string>
     <string name="sign_in">SIGN IN</string>
+    <string name="com_auth0_domain">dev-xt0nffzoa848o3bw.us.auth0.com</string>
+    <string name="com_auth0_client_id">k6vwuSERpLinuaGQG6B4QZqrsj8WHrn7</string>
 </resources>
