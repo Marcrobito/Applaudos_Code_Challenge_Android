@@ -1,11 +1,28 @@
 package com.applaudostudios.mubi.mvi.state
 
 import com.applaudostudios.core.domain.model.Card
+import com.applaudostudios.core.domain.model.Response
 import com.applaudostudios.core.domain.model.Show
 import com.applaudostudios.core.domain.model.TVListType
 import com.applaudostudios.core.domain.model.TVListType.TOP_RATED
 
 sealed class State
+
+data class SplashState(
+    val isUserAuthenticated: Boolean = false
+) : State()
+
+data class RegisterState(
+    val isLoading: Boolean = false,
+    val isRegisterSuccess: Boolean? = null,
+    val error: String? = null
+) : State()
+
+data class LoginState(
+    val isLoading: Boolean = false,
+    val isLoginSuccess: Boolean? = null,
+    val error: String? = null
+) : State()
 
 data class HomeState(
     val isLoading: Boolean = true,
@@ -19,3 +36,4 @@ data class SeriesDetailState(
     val data: Show? = null,
     val error: String? = null
 ) : State()
+

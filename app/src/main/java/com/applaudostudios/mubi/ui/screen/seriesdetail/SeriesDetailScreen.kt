@@ -37,7 +37,8 @@ import com.applaudostudios.mubi.ui.component.MubiTextStyle
 import com.applaudostudios.mubi.ui.component.RatingBar
 import com.applaudostudios.mubi.ui.component.VerticalSpace
 import com.applaudostudios.mubi.ui.theme.Gray
-import com.applaudostudios.mubi.ui.theme.PrimaryPurple
+import com.applaudostudios.mubi.ui.theme.MubiPalette
+import com.applaudostudios.mubi.ui.theme.Purple
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 
@@ -79,7 +80,7 @@ fun SeriesDetailScreen(
                     IconButton(onClick = {
                         navController?.popBackStack()
                     }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "", tint = Color.White)
+                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "", tint = MubiPalette.DarkColorPalette.background)
                     }
                     Column(
                         modifier = Modifier
@@ -90,7 +91,7 @@ fun SeriesDetailScreen(
                     ) {
                         MubiText(
                             text = show.tagline,
-                            MubiTextStyle(PrimaryPurple, textAlign = TextAlign.Start)
+                            MubiTextStyle(Purple, textAlign = TextAlign.Start)
                         )
                         MubiText(
                             text = show.name,
@@ -108,7 +109,7 @@ fun SeriesDetailScreen(
                 Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                     MubiText(
                         text = "Summary",
-                        MubiTextStyle(PrimaryPurple, textAlign = TextAlign.Start, fontSize = 24)
+                        MubiTextStyle(Purple, textAlign = TextAlign.Start, fontSize = 24)
                     )
                     MubiText(
                         text = show.summary,
@@ -148,7 +149,7 @@ fun SeriesDetailScreen(
                                             MubiText(
                                                 text = "Episodes ${season.episodes}",
                                                 MubiTextStyle(
-                                                    PrimaryPurple,
+                                                    Purple,
                                                     textAlign = TextAlign.Justify,
                                                     fontSize = 12
                                                 )

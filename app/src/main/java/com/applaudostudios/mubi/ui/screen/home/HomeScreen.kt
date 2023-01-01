@@ -12,22 +12,33 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.applaudostudios.core.domain.model.TVListType
+import com.applaudostudios.mubi.R
 import com.applaudostudios.mubi.mvi.action.HomeAction
 import com.applaudostudios.mubi.ui.component.MubiCardComponent
 import com.applaudostudios.mubi.ui.component.NavigationListComponent
 import com.applaudostudios.mubi.ui.component.VerticalSpace
 import com.applaudostudios.mubi.ui.navigation.DETAIL_ROUTE_STRING
+import com.applaudostudios.mubi.ui.navigation.PROFILE_ROUTE_STRING
 
 @Composable
 fun HomeScreen(
@@ -35,7 +46,31 @@ fun HomeScreen(
 ) {
     val state by homeViewModel.state.collectAsState()
     Scaffold(
-        topBar = {},
+        topBar = {
+            TopAppBar(
+                title = { Text(text = stringResource(id = R.string.tv_shows)) },
+                actions = {
+                    IconButton(onClick = {
+                        //navController?.popBackStack()
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
+                    IconButton(onClick = {
+                        navController?.navigate(PROFILE_ROUTE_STRING)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
+                }
+            )
+        },
     ) { contentPadding ->
         Box(
             modifier = Modifier.padding(contentPadding)

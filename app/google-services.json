@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "399465187248",
+    "project_id": "mubi-60e7c",
+    "storage_bucket": "mubi-60e7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399465187248:android:09a8a4adc360c4e9e0f875",
+        "android_client_info": {
+          "package_name": "com.applaudostudios.mubi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399465187248-kaoc89fb1uo53vfjt0ci4uprk75gdmnt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZvLo7OHrrGGosXhmg34Wh_ad2W_Yjrpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399465187248-kaoc89fb1uo53vfjt0ci4uprk75gdmnt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
