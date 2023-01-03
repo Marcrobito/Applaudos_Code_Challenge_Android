@@ -34,7 +34,7 @@ fun MubiCardComponent(card: Card, onClick: () -> Unit = {}) {
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 GlideImage(
@@ -52,7 +52,7 @@ fun MubiCardComponent(card: Card, onClick: () -> Unit = {}) {
                         textColor = Color.Gray
                     )
                 )
-                RatingBar(rating = card.rating)
+                RatingBar(modifier= Modifier.padding(horizontal = 8.dp),rating = card.rating)
                 VerticalSpace(24)
             }
             Button(

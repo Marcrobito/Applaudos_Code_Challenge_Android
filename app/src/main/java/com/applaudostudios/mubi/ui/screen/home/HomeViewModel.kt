@@ -34,11 +34,17 @@ class HomeViewModel @Inject constructor(private val getTVList: GetTVList) :
         _state.value = _state.value.copy(isLoading = true)
         viewModelScope.launch {
             val response = getTVList.invoke(tvListType)
-            Log.d("HomeViewModel", response.toString())
+
             if (response is Response.Success) {
+                val data =
+                    if (tvListType == _state.value.tvType)
+                        _state.value.data + response.data
+                    else
+                        response.data
                 _state.value = _state.value.copy(
                     isLoading = false,
-                    data = response.data
+                    data = data,
+                    tvType = tvListType
                 )
             } else {
                 _state.value = _state.value.copy(

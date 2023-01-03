@@ -28,8 +28,17 @@ data class HomeState(
     val isLoading: Boolean = true,
     val data: List<Card> = emptyList(),
     val tvType: TVListType = TOP_RATED,
-    val error: String? = null
+    val error: String? = null,
+    val page: Int = 0,
+    val pages: Int = 0
 ) : State()
+
+sealed class LogOutState : State() {
+    object LogOutRequested : LogOutState()
+    object LogOutConfirmed : LogOutState()
+}
+
+data class ProfileState(val logOutState: LogOutState? = null) : State()
 
 data class SeriesDetailState(
     val isLoading: Boolean = true,

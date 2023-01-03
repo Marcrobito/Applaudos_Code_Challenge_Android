@@ -13,7 +13,8 @@ interface TheMovieDBApi {
     @GET("tv/{path}")
     suspend fun getTVResponse(
         @Path("path") path: String,
-        @Query("api_key") apiKey: String = API_KEY
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") page: Int = 1
     ): TVResponse
 
     @GET("tv/{id}")

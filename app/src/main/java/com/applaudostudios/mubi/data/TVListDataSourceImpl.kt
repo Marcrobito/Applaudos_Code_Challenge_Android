@@ -1,5 +1,6 @@
 package com.applaudostudios.mubi.data
 
+import android.util.Log
 import com.applaudostudios.core.data.datasource.TVListDataSource
 import com.applaudostudios.core.data.mapper.mapToCard
 import com.applaudostudios.core.domain.model.Card
@@ -10,9 +11,15 @@ import javax.inject.Inject
 
 class TVListDataSourceImpl @Inject constructor(private val api: TheMovieDBApi) : TVListDataSource {
 
+    private var pages = 0
+    private var currentPages = 1
+
     override suspend fun getTVList(tvListType: TVListType): Response<List<Card>> {
         return try {
-            val result = api.getTVResponse(tvListType.value())
+            if (pages != 0) currentPages++
+            val result = api.getTVResponse(tvListType.value(), page = currentPages)
+            pages = result.totalPages
+            Log.d("Pages", pages.toString())
             if (result.results.isNotEmpty())
                 Response.Success(result.results.mapToCard())
             else

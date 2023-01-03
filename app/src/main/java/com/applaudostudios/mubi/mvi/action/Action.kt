@@ -25,6 +25,12 @@ sealed class HomeAction : Action() {
     data class PresentTVDetail(val id: Int) : HomeAction()
 }
 
+sealed class ProfileAction : Action() {
+    object LogOut : ProfileAction()
+    object LogOutCancel : ProfileAction()
+    object LogOutConfirmation : ProfileAction()
+}
+
 sealed class SeriesDetailAction : Action() {
     data class ShowSeriesDetail(val seriesId: Int) : SeriesDetailAction()
 }

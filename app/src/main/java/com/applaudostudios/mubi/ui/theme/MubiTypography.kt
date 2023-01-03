@@ -14,6 +14,7 @@ val RobotoFontFamily = FontFamily(
     Font(R.font.roboto_black),
     Font(R.font.roboto_bold, weight = FontWeight.Bold),
     Font(R.font.roboto_medium, weight = FontWeight.Medium),
+    Font(R.font.roboto_medium, weight = FontWeight.W400),
     Font(R.font.roboto_light, weight = FontWeight.Light),
     Font(R.font.roboto_thin, weight = FontWeight.Thin),
     Font(R.font.roboto_italic, weight = FontWeight.Normal, FontStyle.Italic),
