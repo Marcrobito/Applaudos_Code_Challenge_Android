@@ -13,9 +13,11 @@ class TVListDataSourceImpl @Inject constructor(private val api: TheMovieDBApi) :
 
     private var pages = 0
     private var currentPages = 1
+    private var prevTVListType: TVListType? = null
 
     override suspend fun getTVList(tvListType: TVListType): Response<List<Card>> {
         return try {
+            if (tvListType != prevTVListType) pages = 0
             if (pages != 0) currentPages++
             val result = api.getTVResponse(tvListType.value(), page = currentPages)
             pages = result.totalPages
