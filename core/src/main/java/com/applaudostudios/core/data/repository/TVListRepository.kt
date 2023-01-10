@@ -5,5 +5,6 @@ import com.applaudostudios.core.domain.model.Response
 import com.applaudostudios.core.domain.model.TVListType
 
 interface TVListRepository {
-    suspend fun getTVList(tvListType: TVListType):Response<List<Card>>
+    suspend fun getTVList(tvListType: TVListType): Response<List<Card>>
+    suspend fun searchTVShow(query: String): Response<List<Card>>
 }

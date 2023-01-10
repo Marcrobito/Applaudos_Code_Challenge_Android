@@ -6,4 +6,5 @@ import com.applaudostudios.core.domain.model.TVListType
 
 interface TVListDataSource {
     suspend fun getTVList(tvListType: TVListType): Response<List<Card>>
+    suspend fun searchShow(query: String): Response<List<Card>>
 }

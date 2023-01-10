@@ -31,6 +31,8 @@ sealed class ProfileAction : Action() {
     object LogOutConfirmation : ProfileAction()
 }
 
+data class SearchAction(val query: String) : Action()
+
 sealed class SeriesDetailAction : Action() {
     data class ShowSeriesDetail(val seriesId: Int) : SeriesDetailAction()
 }

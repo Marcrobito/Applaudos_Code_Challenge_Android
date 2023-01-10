@@ -13,7 +13,7 @@ fun CardDTO.mapToCard() =
     Card(
         id,
         name,
-        urlImg ?: poster,
+        urlImg ?: poster?:"",
         BigDecimal(popularity / 2).setScale(1, RoundingMode.HALF_EVEN).toDouble()
     )
 

@@ -37,7 +37,7 @@ object MubiPalette {
         primary = MajorelleBlue,
         primaryVariant = Purple700,
         secondary = MediumBlue,
-        background = SpaceCadet,
+        background = Cultured,
         onError = FieryRose
     )
 

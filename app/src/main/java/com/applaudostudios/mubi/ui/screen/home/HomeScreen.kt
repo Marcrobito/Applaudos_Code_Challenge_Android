@@ -41,6 +41,7 @@ import com.applaudostudios.mubi.ui.component.NavigationListComponent
 import com.applaudostudios.mubi.ui.component.VerticalSpace
 import com.applaudostudios.mubi.ui.navigation.DETAIL_ROUTE_STRING
 import com.applaudostudios.mubi.ui.navigation.PROFILE_ROUTE_STRING
+import com.applaudostudios.mubi.ui.navigation.SEARCH_ROUTE_STRING
 
 @Composable
 fun HomeScreen(
@@ -58,7 +59,7 @@ fun HomeScreen(
                 title = { Text(text = stringResource(id = R.string.tv_shows)) },
                 actions = {
                     IconButton(onClick = {
-
+                        navController?.navigate(SEARCH_ROUTE_STRING)
                     }) {
                         Icon(
                             imageVector = Icons.Default.Search,

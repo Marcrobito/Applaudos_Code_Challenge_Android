@@ -9,6 +9,7 @@ import com.applaudostudios.mubi.ui.screen.signin.SignInScreen
 import com.applaudostudios.mubi.ui.screen.SplashScreen
 import com.applaudostudios.mubi.ui.screen.home.HomeScreen
 import com.applaudostudios.mubi.ui.screen.profile.ProfileScreen
+import com.applaudostudios.mubi.ui.screen.search.SearchScreen
 import com.applaudostudios.mubi.ui.screen.seriesdetail.SeriesDetailScreen
 import com.applaudostudios.mubi.ui.screen.signin.LoginScreen
 import com.applaudostudios.mubi.ui.screen.signin.RegisterScreen
@@ -36,6 +37,9 @@ fun MainNavigation(mainNavController: NavHostController? = null) {
             }
             composable(HOME_ROUTE_STRING) {
                 HomeScreen(navController = navController)
+            }
+            composable(SEARCH_ROUTE_STRING) {
+                SearchScreen(navController = navController)
             }
             composable(PROFILE_ROUTE_STRING) {
                 ProfileScreen(navController = navController)

@@ -8,4 +8,5 @@ import javax.inject.Inject
 class TVLIstRepositoryImpl @Inject constructor(private val dataSource: TVListDataSource) :
     TVListRepository {
     override suspend fun getTVList(tvListType: TVListType) = dataSource.getTVList(tvListType)
+    override suspend fun searchTVShow(query: String) = dataSource.searchShow(query)
 }

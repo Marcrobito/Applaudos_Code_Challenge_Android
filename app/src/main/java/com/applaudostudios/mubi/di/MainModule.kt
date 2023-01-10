@@ -6,6 +6,7 @@ import com.applaudostudios.core.data.repository.ShowRepository
 import com.applaudostudios.core.data.repository.TVListRepository
 import com.applaudostudios.core.usecases.GetShow
 import com.applaudostudios.core.usecases.GetTVList
+import com.applaudostudios.core.usecases.SearchTVShow
 import com.applaudostudios.mubi.data.ShowDataSourceImpl
 import com.applaudostudios.mubi.data.ShowRepositoryImpl
 import com.applaudostudios.mubi.data.TVLIstRepositoryImpl
@@ -51,4 +52,8 @@ object MainModule {
     @Provides
     @Singleton
     fun provideGetShow(repository: ShowRepository) = GetShow(repository)
+
+    @Provides
+    @Singleton
+    fun provideSearchTVShow(repository: TVListRepository) = SearchTVShow(repository)
 }

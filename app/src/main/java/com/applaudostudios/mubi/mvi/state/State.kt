@@ -33,6 +33,15 @@ data class HomeState(
     val pages: Int = 0
 ) : State()
 
+data class SearchState(
+    val isLoading: Boolean = false,
+    val data: List<Card> = emptyList(),
+    val query: String? = null,
+    val error: String? = null,
+    val page: Int = 0,
+    val pages: Int = 0
+) : State()
+
 sealed class LogOutState : State() {
     object LogOutRequested : LogOutState()
     object LogOutConfirmed : LogOutState()
@@ -45,4 +54,5 @@ data class SeriesDetailState(
     val data: Show? = null,
     val error: String? = null
 ) : State()
+
 
