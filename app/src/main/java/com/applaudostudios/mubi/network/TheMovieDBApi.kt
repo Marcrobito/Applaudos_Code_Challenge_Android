@@ -35,5 +35,6 @@ interface TheMovieDBApi {
     suspend fun getSeason(
         @Path("tv_id") id: Int,
         @Path("season_number") seasonNumber: Int,
+        @Query("api_key") apiKey: String = API_KEY
     ): SeasonDetailDTO
 }

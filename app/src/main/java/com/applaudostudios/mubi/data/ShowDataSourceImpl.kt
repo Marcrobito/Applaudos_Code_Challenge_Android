@@ -13,9 +13,7 @@ class ShowDataSourceImpl @Inject constructor(private val api: TheMovieDBApi) : S
     override suspend fun getShow(id: Int): Response<Show> {
         return try {
             val result = api.getShow(id)
-            Log.d("ShowDataSourceImpl", result.toString())
             Response.Success(result.mapToShow())
-            //Response.Error(Exception(""))
         } catch (e: Exception) {
             Response.Error(e)
         }

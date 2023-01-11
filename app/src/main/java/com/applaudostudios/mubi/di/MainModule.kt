@@ -1,12 +1,17 @@
 package com.applaudostudios.mubi.di
 
+import com.applaudostudios.core.data.datasource.SeasonDataSource
 import com.applaudostudios.core.data.datasource.ShowDataSource
 import com.applaudostudios.core.data.datasource.TVListDataSource
+import com.applaudostudios.core.data.repository.SeasonRepository
 import com.applaudostudios.core.data.repository.ShowRepository
 import com.applaudostudios.core.data.repository.TVListRepository
+import com.applaudostudios.core.usecases.GetSeason
 import com.applaudostudios.core.usecases.GetShow
 import com.applaudostudios.core.usecases.GetTVList
 import com.applaudostudios.core.usecases.SearchTVShow
+import com.applaudostudios.mubi.data.SeasonDataSourceImpl
+import com.applaudostudios.mubi.data.SeasonRepositoryImpl
 import com.applaudostudios.mubi.data.ShowDataSourceImpl
 import com.applaudostudios.mubi.data.ShowRepositoryImpl
 import com.applaudostudios.mubi.data.TVLIstRepositoryImpl
@@ -56,4 +61,17 @@ object MainModule {
     @Provides
     @Singleton
     fun provideSearchTVShow(repository: TVListRepository) = SearchTVShow(repository)
+
+    @Provides
+    @Singleton
+    fun provideSeasonDataSource(api: TheMovieDBApi): SeasonDataSource = SeasonDataSourceImpl(api)
+
+    @Provides
+    @Singleton
+    fun provideSeasonRepository(dataSource: SeasonDataSource): SeasonRepository =
+        SeasonRepositoryImpl(dataSource)
+
+    @Provides
+    @Singleton
+    fun provideGetSeason(repository: SeasonRepository) = GetSeason(repository)
 }

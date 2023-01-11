@@ -2,6 +2,7 @@ package com.applaudostudios.mubi.mvi.state
 
 import com.applaudostudios.core.domain.model.Card
 import com.applaudostudios.core.domain.model.Response
+import com.applaudostudios.core.domain.model.SeasonDetail
 import com.applaudostudios.core.domain.model.Show
 import com.applaudostudios.core.domain.model.TVListType
 import com.applaudostudios.core.domain.model.TVListType.TOP_RATED
@@ -40,6 +41,14 @@ data class SearchState(
     val error: String? = null,
     val page: Int = 0,
     val pages: Int = 0
+) : State()
+
+data class SeasonState(
+    val isLoading: Boolean = false,
+    val data: SeasonDetail? = null,
+    val seriesId: Int? = null,
+    val seasonId: Int? = null,
+    val error: String? = null,
 ) : State()
 
 sealed class LogOutState : State() {

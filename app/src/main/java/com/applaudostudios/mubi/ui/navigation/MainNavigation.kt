@@ -10,6 +10,7 @@ import com.applaudostudios.mubi.ui.screen.SplashScreen
 import com.applaudostudios.mubi.ui.screen.home.HomeScreen
 import com.applaudostudios.mubi.ui.screen.profile.ProfileScreen
 import com.applaudostudios.mubi.ui.screen.search.SearchScreen
+import com.applaudostudios.mubi.ui.screen.season.SeasonScreen
 import com.applaudostudios.mubi.ui.screen.seriesdetail.SeriesDetailScreen
 import com.applaudostudios.mubi.ui.screen.signin.LoginScreen
 import com.applaudostudios.mubi.ui.screen.signin.RegisterScreen
@@ -48,6 +49,14 @@ fun MainNavigation(mainNavController: NavHostController? = null) {
                 val seriesId = it.arguments?.getString("seriesId")
                 seriesId?.let { id ->
                     SeriesDetailScreen(navController = navController, seriesId = id.toInt())
+                }
+            }
+            composable("$SEASON_ROUTE_STRING/{seriesId}/{seasonNumber}") {
+                val seriesId = it.arguments?.getString("seriesId")
+                val seasonNumber = it.arguments?.getString("seasonNumber")
+                seriesId?.let { id ->
+                    if (seasonNumber != null)
+                        SeasonScreen(navController = navController, seriesId = id.toInt(), seasonNumber = seasonNumber.toInt())
                 }
             }
         }

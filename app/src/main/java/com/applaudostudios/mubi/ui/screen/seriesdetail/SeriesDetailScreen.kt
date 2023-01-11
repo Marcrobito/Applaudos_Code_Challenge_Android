@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -36,6 +38,7 @@ import com.applaudostudios.mubi.ui.component.MubiText
 import com.applaudostudios.mubi.ui.component.MubiTextStyle
 import com.applaudostudios.mubi.ui.component.RatingBar
 import com.applaudostudios.mubi.ui.component.VerticalSpace
+import com.applaudostudios.mubi.ui.navigation.SEASON_ROUTE_STRING
 import com.applaudostudios.mubi.ui.theme.Gray
 import com.applaudostudios.mubi.ui.theme.MubiPalette
 import com.applaudostudios.mubi.ui.theme.Purple
@@ -80,7 +83,11 @@ fun SeriesDetailScreen(
                     IconButton(onClick = {
                         navController?.popBackStack()
                     }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "", tint = MubiPalette.DarkColorPalette.background)
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "",
+                            tint = MubiPalette.DarkColorPalette.background
+                        )
                     }
                     Column(
                         modifier = Modifier
@@ -160,6 +167,15 @@ fun SeriesDetailScreen(
                                                 MubiTextStyle(Gray, textAlign = TextAlign.Justify)
                                             )
                                         }
+                                    }
+                                    Button(
+                                        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+                                        modifier = Modifier.fillMaxSize(),
+                                        elevation = ButtonDefaults.elevation(0.dp),
+                                        onClick = {
+                                            navController?.navigate("$SEASON_ROUTE_STRING/${show.id}/${season.seasonNumber}")
+                                        }) {
+
                                     }
                                 }
                             }

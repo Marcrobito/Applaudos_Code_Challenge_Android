@@ -4,5 +4,5 @@ data class SeasonDetail(
     val id: Int,
     val name: String,
     val episodes: List<Episode>,
-    val image: String
+    val image: String?
 )

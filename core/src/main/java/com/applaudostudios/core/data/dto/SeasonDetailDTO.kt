@@ -8,6 +8,6 @@ import com.squareup.moshi.JsonClass
 data class SeasonDetailDTO(
     @Json(name = "id") val id: Int,
     @Json(name = "name") val name: String,
-    @Json(name = "episodes") val episodes: List<Episode>,
+    @Json(name = "episodes") val episodes: List<EpisodeDTO>,
     @Json(name = "poster_path") val image: String?
 )

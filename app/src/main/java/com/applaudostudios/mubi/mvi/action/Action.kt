@@ -32,6 +32,7 @@ sealed class ProfileAction : Action() {
 }
 
 data class SearchAction(val query: String) : Action()
+data class SeasonAction(val seasonId: Int, val seriesId: Int) : Action()
 
 sealed class SeriesDetailAction : Action() {
     data class ShowSeriesDetail(val seriesId: Int) : SeriesDetailAction()
