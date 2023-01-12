@@ -1,5 +1,7 @@
 package com.applaudostudios.mubi.di
 
+import android.app.Application
+import androidx.room.Room
 import com.applaudostudios.core.data.datasource.SeasonDataSource
 import com.applaudostudios.core.data.datasource.ShowDataSource
 import com.applaudostudios.core.data.datasource.TVListDataSource
@@ -18,6 +20,8 @@ import com.applaudostudios.mubi.data.TVLIstRepositoryImpl
 import com.applaudostudios.mubi.data.TVListDataSourceImpl
 import com.applaudostudios.mubi.network.Network
 import com.applaudostudios.mubi.network.TheMovieDBApi
+import com.applaudostudios.mubi.room.DataBase
+import com.applaudostudios.mubi.room.dao.CardDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,7 +38,18 @@ object MainModule {
 
     @Provides
     @Singleton
-    fun provideTVListDataSource(api: TheMovieDBApi): TVListDataSource = TVListDataSourceImpl(api)
+    fun provideDB(application: Application) = Room.databaseBuilder(
+        application,
+        DataBase::class.java, "database"
+    ).build()
+
+    @Provides
+    @Singleton
+    fun provideCardDao(db:DataBase):CardDao = db.cardDao()
+
+    @Provides
+    @Singleton
+    fun provideTVListDataSource(api: TheMovieDBApi, cardDao: CardDao): TVListDataSource = TVListDataSourceImpl(api, cardDao)
 
     @Provides
     @Singleton
@@ -74,4 +89,6 @@ object MainModule {
     @Provides
     @Singleton
     fun provideGetSeason(repository: SeasonRepository) = GetSeason(repository)
+
+
 }
