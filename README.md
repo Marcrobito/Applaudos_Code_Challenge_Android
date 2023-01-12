@@ -2,12 +2,8 @@
 Applaudo’s Code Challenge Android
 
 ##TODO
-Add room integration
-Add App bar
-Add series Search
+Add full room integration
 Add error messages
 Add cache images and place holder 
-Add Login
-Add Unit Testing
-Add Pagination
-Add Season detail
+Add Full Unit Testing
+Add Network detection
